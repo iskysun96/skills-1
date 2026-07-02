@@ -18,7 +18,46 @@
 
 ## MCP server auth
 
-The plugin provides the Box skill and safety rules. The MCP server connection is configured by the user through their platform's MCP settings/config file. This keeps credentials in the user's own config and avoids the complexity of environment variable resolution. For platform-specific config paths and examples, use the setup guides linked from the repository root README.
+The plugin provides the Box skill and safety rules. The Box MCP server
+authenticates via OAuth 2.0, and the connection is configured by the user
+through their platform's MCP settings/config file. This keeps credentials in
+the user's own config and avoids the complexity of environment-variable
+resolution. For platform-specific config paths and examples, use the setup
+guides linked from the repository root README.
+
+Prefer the marketplace path first: if the user's client has a connector/plugin
+marketplace, direct them to connect to Box through it. For the list of supported
+clients, see https://docs.box.com/en/box-mcp/supported-ai-platforms and walk
+them through those instructions. Only set up a custom MCP connection if the
+client is not on that list.
+
+The Box OAuth app must also have the platform's redirect URI registered (for
+example, `cursor://anysphere.cursor-mcp/oauth/callback` for Cursor).
+
+If MCP tools are not appearing in the session:
+
+1. Check your platform MCP config for a Box server entry. If it contains a `box` server with `CLIENT_ID` and `CLIENT_SECRET` values, the MCP server should be available. Verify by calling `who_am_i`. If it fails, the OAuth flow may not have been completed — call `mcp_auth` to trigger it.
+2. If no Box server entry exists, guide the user through `references/auth-and-setup.md` to create or retrieve OAuth credentials and add the server:
+
+```json
+{
+  "mcpServers": {
+    "box": {
+      "url": "https://mcp.box.com",
+      "auth": {
+        "CLIENT_ID": "<client_id>",
+        "CLIENT_SECRET": "<client_secret>"
+      }
+    }
+  }
+}
+```
+
+If the file already contains other MCP servers, merge the `box` entry into the existing `mcpServers` object — do not overwrite the file. Never write credentials into the conversation or into files inside a repository.
+
+3. Confirm the OAuth app has the correct redirect URI for the platform.
+4. Confirm any platform setting required for third-party plugins or MCP integrations is enabled (for Cursor, Settings > Features > "Include third-party Plugins, Skills, and other configs").
+5. Restart the editor only as a last resort — MCP connections are established at startup.
 
 ### Diagnosing auth failures
 
@@ -112,7 +151,7 @@ When the task is a local smoke test, quick inspection, or one-off verification f
   - Use an app config file: `box configure:environments:add PATH`
 - Use `--as-user <id>` when you need to verify behavior as a managed user or another actor allowed by the current Box environment.
 - Use `-t <token>` only when the task explicitly requires a direct bearer token instead of the current CLI environment.
-- Avoid `box configure:environments:get --current` as a routine auth check because it can print sensitive environment details.
+- For CLI auth guardrails (safe checks, commands to avoid), see `references/box-cli.md`.
 - For token-first REST verification, prefer environment-based auth (for example `BOX_ACCESS_TOKEN`) and pass the token via `Authorization: Bearer ...` headers. Avoid printing or echoing token values in logs or command output.
 
 ## Choosing the auth path

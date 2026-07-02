@@ -10,6 +10,7 @@
 - Webhook verification failures
 - Search quality problems
 - MCP server not connected
+- MCP tool missing
 - CLI auth problems
 - Codex sandbox network access
 
@@ -83,6 +84,10 @@ Box MCP tools are not appearing in the session, or MCP calls fail with auth erro
 **Quick diagnostic:** If other MCP servers work but Box does not, the issue is Box-specific auth. If no MCP servers work, the issue is platform configuration.
 
 **Workaround:** Fall back to Box CLI while the user resolves MCP auth. See `references/box-cli.md` for CLI auth setup. If CLI is not available, request explicit user confirmation before using REST fallback and follow `references/rest-calls.md`.
+
+## MCP tool missing
+
+If the user asks to use a Box MCP tool that seems like it should work but it is not visible in the current client, check the updated/maintained tool list at https://docs.box.com/en/box-mcp/tools. If the tool appears there but is not discoverable or callable, it may be disabled in the Box Admin Console or by the MCP client. Refer the user to https://docs.box.com/en/box-mcp/admin-controls to enable tools in the Box Admin Console, then close and reopen the MCP client, reconnect their Box account, or start a new chat if the tool list appears cached.
 
 ## CLI auth problems
 

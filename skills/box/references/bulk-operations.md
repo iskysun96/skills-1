@@ -31,7 +31,7 @@ Use this reference when the task involves more than a handful of files or folder
 
 ### Box CLI must run serially
 
-The Box CLI does not support concurrent invocations against the same environment. Launching multiple CLI processes in parallel causes auth conflicts, dropped operations, and unpredictable errors. **Always run CLI commands one at a time, waiting for each to complete before starting the next.**
+**Always run CLI commands one at a time, waiting for each to complete before starting the next.** See `references/box-cli.md` for why concurrent CLI invocations fail.
 
 ### Box API rate limits
 
@@ -71,12 +71,9 @@ Capture each item's `id`, `name`, and `type` into a working list before proceedi
 
 Skip this step if files can be categorized by filename, extension, or existing metadata. Use it when the documents are unstructured and their content determines the category — for example, a folder of mixed invoices, receipts, contracts, and reports that all share the same file type.
 
-### Preference order for content understanding
+### Content understanding and classification tools
 
-1. **Box AI Q&A or Extract** (preferred) — ask Box AI to classify or extract structured fields from each file. This keeps content server-side, requires no downloads, and leverages Box's own document understanding.
-2. **Metadata inspection** — check existing Box metadata templates or properties already applied to the files.
-3. **Previews or thumbnails** — use Box preview representations for lightweight visual inspection without downloading the full file.
-4. **Local analysis (OCR, agent-side parsing)** — download the file and process it locally. Use only when Box AI is unavailable, not authorized, or insufficient for the document type.
+For the preference order (Box AI → metadata → previews → local analysis), Box AI CLI command syntax, and error diagnostics, see `references/ai-and-retrieval.md`.
 
 ### Sample-first strategy
 
@@ -88,39 +85,8 @@ Do not classify every file up front. Box AI calls are slower than metadata reads
 4. **Classify the remainder** — use AI only for files that cannot be sorted by cheaper signals. Pace AI calls at least 1–2 seconds apart.
 5. **Record each classification** (file ID → category) as it completes so an interrupted run can resume without re-classifying finished files.
 
-### Box AI classification via CLI
-
-**Before the first AI call**, run `box ai:ask --help` to confirm the command exists in the installed CLI version and to check for any flag changes.
-
-Use `box ai:ask` to classify a single file by asking a direct question:
-
-```bash
-box ai:ask --items=id=<FILE_ID>,type=file \
-  --prompt "What type of document is this? Reply with exactly one of: invoice, receipt, contract, report, other." \
-  --json --no-color
-```
-
-Use `box ai:extract` when you need key-value extraction via a freeform prompt:
-
-```bash
-box ai:extract --items=id=<FILE_ID>,type=file \
-  --prompt "document_type, vendor_name, date" \
-  --json --no-color
-```
-
-Use `box ai:extract-structured` when you have a metadata template or want typed fields with options:
-
-```bash
-box ai:extract-structured --items=id=<FILE_ID>,type=file \
-  --fields "key=document_type,type=enum,options=invoice;receipt;contract;report;other" \
-  --json --no-color
-```
-
-Reference: https://github.com/box/boxcli/blob/main/docs/ai.md
-
 ### Handling failures during classification
 
-- **Exit code 2 or "Unexpected Error" with no HTTP body** can mean the installed CLI version does not have AI commands, Box AI is not enabled for the account, or the file type is not supported. Run `box ai:ask --help` to verify the command exists. If the command exists but still fails, try a known-supported file type (PDF, DOCX) to distinguish account-level unavailability from file-type incompatibility.
 - If the first AI call returns a 403, feature-not-available, or similar authorization error, stop attempting AI classification for the remaining files and switch to the next method in the preference order immediately.
 - If an individual file fails (unsupported format, empty content, timeout), log it and continue. Classify it manually or by fallback method after the batch finishes.
 - On 429, wait for the `Retry-After` period and retry the same file before moving to the next one.
