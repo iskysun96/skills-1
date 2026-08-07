@@ -18,6 +18,8 @@ Check out the latest and full list of skills [here](https://skills.sh/box/box-fo
 
 This repo can also be installed as a plugin for supported platforms. You configure the Box MCP server connection through your platform's MCP settings — see the setup guide for your platform below.
 
+The root `plugin.json` and `mcp.json` follow the [Agent Plugins v1.0.0 specification](https://agent-plugins.org/specification). The portable MCP configuration declares the Box MCP endpoint; authentication remains managed by each client. Do not add credentials to this repository's root `mcp.json`; configure them only in your client's settings.
+
 | Platform | Setup guide |
 |---|---|
 | Codex | [`.codex-plugin/README.md`](.codex-plugin/README.md) |

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "box",
+  "version": "1.0.0",
+  "description": "Box plugin for working with Box content, building Box Platform integrations, and using Box AI.",
+  "author": {
+    "name": "Box"
+  },
+  "homepage": "https://developer.box.com/",
+  "repository": "https://github.com/box/box-for-ai",
+  "license": "MIT",
+  "keywords": ["box", "ai", "box-ai", "content", "content-management", "document-management", "cloud-storage", "mcp", "filesystem", "file-management", "collaboration", "governance", "compliance"]
+}
