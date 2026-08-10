@@ -2,7 +2,7 @@
 
 Agent Skills to help developers using AI agents work with Box. Whether you're building Box integrations in code, working with Box content via MCP tools, configuring webhooks, or using Box AI retrieval — this plugin gives your assistant the context it needs to do it right.
 
-The skills in this repo follow the [Agent Skills](https://agentskills.io/) format and can also be installed as a plugin for platforms like Codex, [Cursor](https://cursor.com), and [Claude Code](https://code.claude.com).
+The skills in this repo follow the [Agent Skills](https://agentskills.io/) format and can also be installed as a plugin for platforms like Codex, [Cursor](https://cursor.com), and [Claude](https://claude.com), including Claude Code and Cowork.
 
 ## Installation
 
@@ -17,6 +17,8 @@ Check out the latest and full list of skills [here](https://skills.sh/box/box-fo
 ### As a Platform Plugin
 
 This repo can also be installed as a plugin for supported platforms. You configure the Box MCP server connection through your platform's MCP settings — see the setup guide for your platform below.
+
+The root `plugin.json` and `mcp.json` follow the [Agent Plugins v1.0.0 specification](https://agent-plugins.org/specification). The portable MCP configuration declares the Box MCP endpoint; authentication remains managed by each client. Do not add credentials to this repository's root `mcp.json`; configure them only in your client's settings.
 
 | Platform | Setup guide |
 |---|---|
