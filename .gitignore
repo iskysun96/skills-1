@@ -1,6 +1,7 @@
 .claude/*
 !.claude/settings.json
 .cursor/
+.kiro/
 .DS_Store
 *.swp
 *.swo

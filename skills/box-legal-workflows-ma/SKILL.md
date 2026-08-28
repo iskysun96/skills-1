@@ -6,8 +6,8 @@ description: Build and manage M&A virtual data rooms with Box MCP — create sec
 # M&A Deal Room Management
 
 > **PREREQUISITES:**
-> - Read `box:box` for Box MCP auth, tool selection, base workflows. If missing, run: `npx skills add https://github.com/box/box-for-ai --skill box`
-> - Read `box-legal-workflows` for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If missing, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
+> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
+> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
 
 Build and run an M&A data room *in Box*: create the folder hierarchy, scope role-based access with Box collaborations, validate permissions before sharing, and answer due-diligence questions with Box AI plus citations. This skill is the deal-room-specific recipe; the underlying Box tool mechanics live in the capability references below. Deal risk, materiality, and terms are attorney calls. Not legal advice.
 
@@ -15,14 +15,14 @@ Build and run an M&A data room *in Box*: create the folder hierarchy, scope role
 
 Reach for these for tool mechanics rather than restating them here:
 
-- `box:references/content-workflows.md` — create the folder hierarchy, upload/copy, classify-and-file submissions
-- `box:references/collaboration.md` — role-based access, shared links, permission audits (`list_item_collaborations`)
-- `box:references/mcp-search.md` — locate documents, folder-scoped search
-- `box:references/ai-and-retrieval.md` — due-diligence Q&A and term extraction with citations
+- The `box` skill's `references/content-workflows.md` — create the folder hierarchy, upload/copy, classify-and-file submissions
+- The `box` skill's `references/collaboration.md` — role-based access, shared links, permission audits (`list_item_collaborations`)
+- The `box` skill's `references/mcp-search.md` — locate documents, folder-scoped search
+- The `box` skill's `references/ai-and-retrieval.md` — due-diligence Q&A and term extraction with citations
 
 ## Folder structure
 
-Create the tree using the MCP tools in `box:references/content-workflows.md` (top-down, parent before child; reuse the existing folder on a `409` name conflict). Confirm the firm's template first. Example numbered structure — numeric prefixes keep ordering consistent and segregate external submissions:
+Create the tree using the MCP tools in the `box` skill's `references/content-workflows.md` (top-down, parent before child; reuse the existing folder on a `409` name conflict). Confirm the firm's template first. Example numbered structure — numeric prefixes keep ordering consistent and segregate external submissions:
 
 ```
 [Deal Name] M&A Deal Room/
@@ -38,7 +38,7 @@ Create the tree using the MCP tools in `box:references/content-workflows.md` (to
 
 ## Access model
 
-Scope access least-privilege and folder-specific rather than root (role capabilities and external-sharing confirmation rules are in `box:references/collaboration.md` and `box-legal-workflows`). Example deal-room mapping (confirm with the user):
+Scope access least-privilege and folder-specific rather than root (role capabilities and external-sharing confirmation rules are in the `box` skill's `references/collaboration.md` and the bundled `box-legal-workflows` skill). Example deal-room mapping (confirm with the user):
 
 - Internal: Deal Lead → Editor/Co-Owner on root; Finance → Viewer on Financial Statements; Legal → Editor on Legal Documents.
 - External: External Counsel → Uploader on their own folder; Auditors → Viewer on Financial Statements; Prospective Buyer → Viewer on a curated subset, not the full room.

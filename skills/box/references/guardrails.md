@@ -1,8 +1,3 @@
----
-description: Non-negotiable safety and scope constraints for Box MCP tool usage
-alwaysApply: true
----
-
 # Box MCP guardrails
 
 These rules are mandatory. They override softer guidance from skills or conversation context.
@@ -66,4 +61,4 @@ See `references/box-cli.md` for auth setup, common commands, and guardrails.
 
 If neither MCP tools nor the CLI can complete the task, use direct REST only
 after the user explicitly confirms the fallback and completes safe auth setup.
-See `skills/box/references/rest-calls.md`.
+See `references/rest-calls.md`.

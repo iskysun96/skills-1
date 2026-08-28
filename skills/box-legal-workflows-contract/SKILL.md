@@ -7,8 +7,8 @@ description: Automate contract review and monitoring with Box MCP — find new o
 
 > **PREREQUISITES:**
 >
-> - Read `box:box` for Box MCP auth, tool selection, base workflows. If missing, run: `npx skills add https://github.com/box/box-for-ai --skill box`
-> - Read `box-legal-workflows` for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If missing, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
+> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
+> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
 
 Do contract review *in Box*: find contracts with Box search, compare against the firm's template with Box AI, persist results as Box metadata so they stay searchable, and monitor dates with metadata search. This skill is the contract-specific recipe; the underlying Box tool mechanics live in the capability references below. Materiality, risk, and favorability are firm-supplied criteria confirmed by an attorney — the agent extracts facts, stores them, and routes. It does not provide legal advice or decide risk.
 
@@ -16,21 +16,21 @@ Do contract review *in Box*: find contracts with Box search, compare against the
 
 Reach for these for tool mechanics rather than restating them here:
 
-- `box:references/mcp-search.md` — find contracts; metadata vs. keyword search, folder scoping, template schema lookup
-- `box:references/ai-and-retrieval.md` — compare to template and extract fields; pacing, text-rep/file limits, citations
-- `box:references/content-workflows.md` — metadata templates, `set_file_metadata`, report uploads, file comments
-- `box:references/collaboration.md` — grant the reviewing attorney access
+- The `box` skill's `references/mcp-search.md` — find contracts; metadata vs. keyword search, folder scoping, template schema lookup
+- The `box` skill's `references/ai-and-retrieval.md` — compare to template and extract fields; pacing, text-rep/file limits, citations
+- The `box` skill's `references/content-workflows.md` — metadata templates, `set_file_metadata`, report uploads, file comments
+- The `box` skill's `references/collaboration.md` — grant the reviewing attorney access
 
 ## Box metadata model
 
-Persist review results as file metadata so contracts stay searchable. Find/inspect the firm's template via `box:references/mcp-search.md`; create one via `box:references/content-workflows.md` if none exists.
+Persist review results as file metadata so contracts stay searchable. Find or inspect the firm's template using the `box` skill's `references/mcp-search.md`; create one using its `references/content-workflows.md` if none exists.
 
 - **Representative fields** (confirm the firm's actual set): `counterparty_name`, `contract_type`, `execution_date`, `effective_date`, `expiration_date`, `auto_renewal`, `notice_period_days`, `contract_value`, `governing_law`, `status` (active/expired/terminated/under_negotiation), `risk_rating`, `review_date`, `next_review_date`, `expiration_alert_date`. Link to matters with `matter_id`, `practice_area`, `matter_owner`.
 - The `risk_rating` value is the firm/attorney's determination — store it, don't decide it.
 
 ## Contract search recipes
 
-Once contracts carry metadata, use `search_files_metadata` (mechanics in `references/mcp-search.md`; otherwise `search_files_keyword` with date filters):
+Once contracts carry metadata, use `search_files_metadata` (mechanics in the `box` skill's `references/mcp-search.md`; otherwise `search_files_keyword` with date filters):
 
 - New since last review: `execution_date >= 'YYYY-MM-DD' AND execution_date <= 'YYYY-MM-DD'`
 - Expiring window: `expiration_date >= 'YYYY-MM-DD' AND expiration_date <= 'YYYY-MM-DD' AND status = 'active'`

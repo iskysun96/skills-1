@@ -5,7 +5,7 @@ description: Shared building blocks for Box-based legal workflows — Box collab
 
 # Shared Legal Concepts
 
-> **PREREQUISITE:** Read `box:box` for Box MCP authentication, tool selection, and base workflows. If missing, run: `npx skills add https://github.com/box/box-for-ai --skill box`
+> **PREREQUISITE:** Use the `box` skill for Box MCP authentication, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
 
 Shared building blocks used by the legal skills (M&A, Intake, Contract Review): Box collaboration role definitions, the boundaries of where Box AI must not be the decision-maker, and reusable confirmation phrasings. Risk frameworks, metadata fields, workflows, and decision-transparency requirements live in the individual legal skills.
 
@@ -13,8 +13,8 @@ Shared building blocks used by the legal skills (M&A, Intake, Contract Review): 
 
 Reach for these for the underlying Box tool mechanics rather than restating them here:
 
-- `box:references/collaboration.md` — collaborator role capabilities, shared links, and external-sharing rules
-- `box:references/ai-and-retrieval.md` — Box AI Q&A, extraction, and structured metadata tools, with pacing/limits/citations
+- The `box` skill's `references/collaboration.md` — collaborator role capabilities, shared links, and external-sharing rules
+- The `box` skill's `references/ai-and-retrieval.md` — Box AI Q&A, extraction, and structured metadata tools, with pacing/limits/citations
 
 ---
 
@@ -22,7 +22,7 @@ Reach for these for the underlying Box tool mechanics rather than restating them
 
 **[CONFIRM: What permission level is appropriate?]**
 
-For the full breakdown of each Box collaborator role (Co-owner, Editor, Viewer Uploader, Previewer Uploader, Viewer, Previewer, Uploader) and the exact capabilities each grants, see the role matrix in `box:references/collaboration.md`. Use that matrix to determine which role fits a given collaborator, then have the human confirm the choice before granting access.
+For the full breakdown of each Box collaborator role (Co-owner, Editor, Viewer Uploader, Previewer Uploader, Viewer, Previewer, Uploader) and the exact capabilities each grants, see the role matrix in the `box` skill's `references/collaboration.md`. Use that matrix to determine which role fits a given collaborator, then have the human confirm the choice before granting access.
 
 Apply least privilege: default to the most restrictive role that still lets the collaborator do their job, prefer specific folders over root access, and set expiration dates on external collaborations.
 
@@ -40,7 +40,7 @@ Box AI informs; a human attorney decides. Do **NOT** use Box AI for:
 
 Box AI is appropriate for *informing* humans — completeness checks, risk-factor flagging, metadata extraction, contract comparison, and due-diligence Q&A — always with citations surfaced and a human making the final call.
 
-For details on the Box AI tools available and how to use them, see `box:references/ai-and-retrieval.md`.
+For details on the Box AI tools available and how to use them, see the `box` skill's `references/ai-and-retrieval.md`.
 
 ---
 

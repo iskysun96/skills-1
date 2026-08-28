@@ -6,8 +6,8 @@ description: Automate legal client intake and onboarding with Box MCP — review
 # Client Intake & Onboarding
 
 > **PREREQUISITES:**
-> - Read `box:box` for Box MCP auth, tool selection, base workflows. If missing, run: `npx skills add https://github.com/box/box-for-ai --skill box`
-> - Read `box-legal-workflows` for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If missing, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
+> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
+> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
 
 Do client intake *in Box*: inventory the intake folder, check completeness with Box AI against the firm's checklist, extract intake data into Box metadata, route via comments and collaborations, and generate the engagement letter with Box DocGen. This skill is the intake-specific recipe; the underlying Box tool mechanics live in the capability references below. The firm supplies the required-document checklist and risk criteria; conflict, PEP, and sanctions determinations run through the firm's screening system — not the agent or Box AI. Not legal advice.
 
@@ -15,15 +15,15 @@ Do client intake *in Box*: inventory the intake folder, check completeness with 
 
 Reach for these for tool mechanics rather than restating them here:
 
-- `box:references/content-workflows.md` — inventory the folder, metadata templates, `set_file_metadata`, file comments
-- `box:references/ai-and-retrieval.md` — completeness checks and data extraction; pacing, limits, citations
-- `box:references/mcp-doc-gen.md` — generate the engagement letter from a template
-- `box:references/collaboration.md` — tag/route the attorney and share with the client
-- `box:references/mcp-search.md` — find/inspect the firm's metadata template
+- The `box` skill's `references/content-workflows.md` — inventory the folder, metadata templates, `set_file_metadata`, file comments
+- The `box` skill's `references/ai-and-retrieval.md` — completeness checks and data extraction; pacing, limits, citations
+- The `box` skill's `references/mcp-doc-gen.md` — generate the engagement letter from a template
+- The `box` skill's `references/collaboration.md` — tag/route the attorney and share with the client
+- The `box` skill's `references/mcp-search.md` — find/inspect the firm's metadata template
 
 ## Box metadata model
 
-Record the intake outcome as file metadata so submissions stay searchable. Find/create the firm's template via `box:references/mcp-search.md` / `box:references/content-workflows.md`.
+Record the intake outcome as file metadata so submissions stay searchable. Find or create the firm's template using the `box` skill's `references/mcp-search.md` and its `references/content-workflows.md`.
 
 - **Representative fields** (confirm the firm's actual set): `client_name`, `matter_name`, `practice_area`, `matter_owner`, `jurisdiction`, `matter_value`, `intake_status` (complete/incomplete), `risk_rating`, `assigned_attorney`, `decision`, `decision_date`.
 - Store the firm/attorney's rating and decision, not the agent's.

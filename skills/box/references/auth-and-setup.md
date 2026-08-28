@@ -19,11 +19,10 @@
 ## MCP server auth
 
 The plugin provides the Box skill and safety rules. The Box MCP server
-authenticates via OAuth 2.0, and the connection is configured by the user
-through their platform's MCP settings/config file. This keeps credentials in
-the user's own config and avoids the complexity of environment-variable
-resolution. For platform-specific config paths and examples, use the setup
-guides linked from the repository root README.
+authenticates via OAuth 2.0, and the connection is managed by the client,
+either as part of the installed plugin or through the client's MCP settings.
+For platform-specific setup, use the guides linked from the repository root
+README.
 
 Prefer the marketplace path first: if the user's client has a connector/plugin
 marketplace, direct them to connect to Box through it. For the list of supported
@@ -36,8 +35,8 @@ example, `cursor://anysphere.cursor-mcp/oauth/callback` for Cursor).
 
 If MCP tools are not appearing in the session:
 
-1. Check your platform MCP config for a Box server entry. If it contains a `box` server with `CLIENT_ID` and `CLIENT_SECRET` values, the MCP server should be available. Verify by calling `who_am_i`. If it fails, the OAuth flow may not have been completed — call `mcp_auth` to trigger it.
-2. If no Box server entry exists, guide the user through `references/auth-and-setup.md` to create or retrieve OAuth credentials and add the server:
+1. Check whether the client shows the Box MCP server as connected. Verify by calling `who_am_i`. If it fails, use the client's MCP authentication or reconnect action to complete OAuth, then retry.
+2. If no Box server entry exists, use the platform-specific setup guide linked from the repository README. The following `auth` example is specific to Cursor:
 
 ```json
 {
@@ -61,9 +60,9 @@ If the file already contains other MCP servers, merge the `box` entry into the e
 
 ### Diagnosing auth failures
 
-If MCP tools are unavailable or `mcp_auth` fails, run these checks (never print credential values):
+If MCP tools are unavailable or MCP OAuth fails, run these checks (never print credential values):
 
-1. **Check your platform MCP config for a Box server entry.** If it contains a `box` server with `CLIENT_ID` and `CLIENT_SECRET` values, the MCP server should be available. Verify by calling `who_am_i`. If it fails, the OAuth flow may not have been completed — call `mcp_auth` to trigger it.
+1. **Check whether the client shows the Box MCP server as connected.** Verify by calling `who_am_i`. If it fails, use the client's MCP authentication or reconnect action to complete OAuth, then retry.
 2. If the platform MCP config has no Box server entry, ask the user whether they already have a Box OAuth 2.0 app:
    - **Yes** — direct them to retrieve their credentials (see "Retrieving credentials from an existing app" below) and then configure them (see "Setting up credentials").
    - **No** — walk them through creating one (see "Creating a Box OAuth 2.0 app") and then configuring the credentials.
@@ -122,7 +121,7 @@ Environment-variable setup is not required for MCP credentials. Whether restart 
 
 After credentials are configured:
 
-1. The agent calls `mcp_auth` to start the OAuth flow.
+1. Start the OAuth flow using the client's MCP authentication or reconnect action.
 2. A browser window opens with the Box login page — the user authorizes the app.
 3. Box redirects back to the platform via the registered callback URI.
 4. The agent verifies the connection with `who_am_i`.

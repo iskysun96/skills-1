@@ -64,7 +64,7 @@ The Box MCP server is the default tooling for agent workflows. It provides struc
 
 ### Availability check
 
-- Call `who_am_i`. If it fails, try `mcp_auth`.
+- Call `who_am_i`. If it fails, complete the client-provided MCP OAuth flow and retry.
 - If auth still fails, read `references/auth-and-setup.md` for MCP setup steps and walk the user through setup before considering other tooling.
 - Record whether MCP is available.
 
@@ -127,7 +127,7 @@ Building application code (SDK/REST endpoints, webhook handlers) the user ships 
 
 Follow these steps in order when coding against Box.
 
-0. Inventory available Box tooling using the availability checks in the **MCP** and **CLI / REST API** sections above: check MCP first (`who_am_i` / `mcp_auth`), then CLI (`box users:get me --json`), and record which are available. When tooling is missing, follow the escalation order from **Route The Request** (MCP setup → CLI setup → REST after explicit confirmation). If the task is building application code (adding SDK endpoints, webhook handlers), tooling availability is secondary — proceed to step 1.
+0. Inventory available Box tooling using the availability checks in the **MCP** and **CLI / REST API** sections above: check MCP first (`who_am_i`, completing client-provided OAuth if needed), then CLI (`box users:get me --json`), and record which are available. When tooling is missing, follow the escalation order from **Route The Request** (MCP setup → CLI setup → REST after explicit confirmation). If the task is building application code (adding SDK endpoints, webhook handlers), tooling availability is secondary — proceed to step 1.
 1. Inspect the repository for existing Box auth, SDK or HTTP client, env vars, webhook handlers, Box ID persistence, and tests.
 2. Determine the acting identity before choosing endpoints: connected user, enterprise service account, app user, or platform-provided token.
 3. Select the tool using the tool selection table and identify the domain reference using the domain routing table above.
@@ -139,7 +139,7 @@ Follow these steps in order when coding against Box.
 
 ## Guardrails
 
-> **Mandatory guardrails live in `rules/box.mdc` (at the repo root).** That file covers confirmation gates for destructive actions, hub modifications, file comments, Doc Gen output locations, externally shared folders, content display preferences, and Box AI governance. Read and follow them in every session.
+> **Read and follow `references/guardrails.md` in every session.** It covers confirmation gates for destructive actions, hub modifications, file comments, Doc Gen output locations, externally shared folders, content display preferences, and Box AI governance.
 
 - Preserve the existing Box auth model unless the user explicitly asks to change it.
 - Check the current official Box docs before introducing a new auth path, changing auth scope, or changing Box AI behavior.
@@ -185,6 +185,7 @@ The final answer should include:
 
 ## References
 
+- `references/guardrails.md`: mandatory safety and scope constraints for Box MCP tool usage
 - `references/content-workflows.md`: files and folders — uploads, downloads, previews, folder trees, moves, metadata; MCP tools + CLI/REST patterns
 - `references/collaboration.md`: sharing and access — collaborator roles, shared links, external-sharing rules; MCP tools + CLI/REST patterns
 - `references/mcp-search.md`: finding content — keyword, folder-name, and metadata search via MCP

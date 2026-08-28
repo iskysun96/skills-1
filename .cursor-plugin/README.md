@@ -54,36 +54,11 @@ Install the Box plugin from the [Cursor Marketplace](https://cursor.com/marketpl
 
 **Manual installation:**
 
-1. Clone this repository and copy it into `~/.cursor/plugins/`:
+1. Clone this repository into Cursor's local plugins directory:
    ```sh
-   git clone https://github.com/box/box-for-ai.git
-   cp -R box-for-ai ~/.cursor/plugins/box
+   git clone https://github.com/box/box-for-ai.git ~/.cursor/plugins/local/box
    ```
-2. Register the plugin in `~/.claude/plugins/installed_plugins.json` (create
-   the file if it doesn't exist):
-   ```json
-   {
-     "plugins": {
-       "box@local": [
-         {
-           "scope": "user",
-           "installPath": "/Users/<you>/.cursor/plugins/box"
-         }
-       ]
-     }
-   }
-   ```
-3. Enable it in `~/.claude/settings.json`:
-   ```json
-   {
-     "enabledPlugins": {
-       "box@local": true
-     }
-   }
-   ```
-4. In Cursor Settings, make sure **Include third-party Plugins, Skills, and
-   other configs** is enabled under **Features**.
-5. Restart Cursor.
+2. Restart Cursor or run **Developer: Reload Window**.
 
 The skill and rules are configured automatically once the plugin is installed.
 
