@@ -2,7 +2,7 @@
 
 Agent Skills to help developers using AI agents work with Box. Whether you're building Box integrations in code, working with Box content via MCP tools, configuring webhooks, or using Box AI retrieval — this plugin gives your assistant the context it needs to do it right.
 
-The skills in this repo follow the [Agent Skills](https://agentskills.io/) format and can also be installed as a plugin for platforms like [Kiro](https://kiro.dev), Codex, [Cursor](https://cursor.com), and [Claude](https://claude.com), including Claude Code and Cowork.
+The skills in this repo follow the [Agent Skills](https://agentskills.io/) format and can also be installed as a plugin for platforms like Codex, [Cursor](https://cursor.com), [Claude](https://claude.com), including Claude Code and Cowork, and [Kiro](https://kiro.dev).
 
 ## Installation
 
@@ -22,10 +22,10 @@ The root `plugin.json` and `mcp.json` follow the [Agent Plugins v1.0.0 specifica
 
 | Platform | Setup guide |
 |---|---|
-| Kiro | [Install as a Kiro Power](#kiro-power) |
 | Codex | [`.codex-plugin/README.md`](.codex-plugin/README.md) |
 | Cursor | [`.cursor-plugin/README.md`](.cursor-plugin/README.md) |
 | Claude Code | [`.claude-plugin/README.md`](.claude-plugin/README.md) |
+| Kiro | [Install as a Kiro Power](#kiro-power) |
 
 ### Kiro Power
 

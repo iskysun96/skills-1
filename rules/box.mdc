@@ -46,7 +46,9 @@ Follow their choice for the rest of the session.
 ## Ask for Doc Gen output location
 
 Before calling `create_docgen_batch`, ask the user which folder (by name or ID)
-the generated documents should be placed in. Do not assume a default location.
+the generated documents should be placed in. If they need a new folder, ask
+whether to create one and confirm its name and parent folder. Do not assume a
+default location.
 
 ## Warn before uploading to externally shared folders
 
@@ -62,5 +64,6 @@ are a better fit for the task. Check whether the Box CLI is installed and
 authenticated (`box users:get me --json`), then use the appropriate command.
 See `references/box-cli.md` for auth setup, common commands, and guardrails.
 
-If neither MCP tools nor the CLI can complete the task, tell the user directly
-and suggest alternatives.
+If neither MCP tools nor the CLI can complete the task, use direct REST only
+after the user explicitly confirms the fallback and completes safe auth setup.
+See `skills/box/references/rest-calls.md`.
