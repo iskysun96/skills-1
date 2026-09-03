@@ -7,8 +7,8 @@ description: Automate contract review and monitoring with Box MCP — find new o
 
 > **PREREQUISITES:**
 >
-> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
-> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
+> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/skills --skill box`
+> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/skills --skill box-legal-workflows`
 
 Do contract review *in Box*: find contracts with Box search, compare against the firm's template with Box AI, persist results as Box metadata so they stay searchable, and monitor dates with metadata search. This skill is the contract-specific recipe; the underlying Box tool mechanics live in the capability references below. Materiality, risk, and favorability are firm-supplied criteria confirmed by an attorney — the agent extracts facts, stores them, and routes. It does not provide legal advice or decide risk.
 

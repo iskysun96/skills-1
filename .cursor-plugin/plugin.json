@@ -6,7 +6,7 @@
   "author": {
     "name": "Box"
   },
-  "repository": "https://github.com/box/box-for-ai",
+  "repository": "https://github.com/box/skills",
   "homepage": "https://developer.box.com/",
   "license": "MIT",
   "keywords": ["box", "ai", "box-ai", "content", "cloud-storage", "mcp", "file-management", "collaboration"],

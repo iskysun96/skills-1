@@ -6,8 +6,8 @@ description: Build and manage M&A virtual data rooms with Box MCP — create sec
 # M&A Deal Room Management
 
 > **PREREQUISITES:**
-> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
-> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
+> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/skills --skill box`
+> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/skills --skill box-legal-workflows`
 
 Build and run an M&A data room *in Box*: create the folder hierarchy, scope role-based access with Box collaborations, validate permissions before sharing, and answer due-diligence questions with Box AI plus citations. This skill is the deal-room-specific recipe; the underlying Box tool mechanics live in the capability references below. Deal risk, materiality, and terms are attorney calls. Not legal advice.
 
