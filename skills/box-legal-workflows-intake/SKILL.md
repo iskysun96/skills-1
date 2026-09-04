@@ -6,8 +6,8 @@ description: Automate legal client intake and onboarding with Box MCP — review
 # Client Intake & Onboarding
 
 > **PREREQUISITES:**
-> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
-> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/box-for-ai --skill box-legal-workflows`
+> - Use the `box` skill for Box MCP auth, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/skills --skill box`
+> - Use the `box-legal-workflows` skill for Box collaboration role definitions, Box AI usage boundaries, and reusable confirmation phrasings. If it is not installed, run: `npx skills add box/skills --skill box-legal-workflows`
 
 Do client intake *in Box*: inventory the intake folder, check completeness with Box AI against the firm's checklist, extract intake data into Box metadata, route via comments and collaborations, and generate the engagement letter with Box DocGen. This skill is the intake-specific recipe; the underlying Box tool mechanics live in the capability references below. The firm supplies the required-document checklist and risk criteria; conflict, PEP, and sanctions determinations run through the firm's screening system — not the agent or Box AI. Not legal advice.
 

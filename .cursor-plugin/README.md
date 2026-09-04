@@ -56,7 +56,7 @@ Install the Box plugin from the [Cursor Marketplace](https://cursor.com/marketpl
 
 1. Clone this repository into Cursor's local plugins directory:
    ```sh
-   git clone https://github.com/box/box-for-ai.git ~/.cursor/plugins/local/box
+   git clone https://github.com/box/skills.git ~/.cursor/plugins/local/box
    ```
 2. Restart Cursor or run **Developer: Reload Window**.
 

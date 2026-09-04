@@ -5,7 +5,7 @@ description: Shared building blocks for Box-based legal workflows — Box collab
 
 # Shared Legal Concepts
 
-> **PREREQUISITE:** Use the `box` skill for Box MCP authentication, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/box-for-ai --skill box`
+> **PREREQUISITE:** Use the `box` skill for Box MCP authentication, tool selection, and base workflows. If it is not installed, run: `npx skills add https://github.com/box/skills --skill box`
 
 Shared building blocks used by the legal skills (M&A, Intake, Contract Review): Box collaboration role definitions, the boundaries of where Box AI must not be the decision-maker, and reusable confirmation phrasings. Risk frameworks, metadata fields, workflows, and decision-transparency requirements live in the individual legal skills.
 

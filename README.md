@@ -9,10 +9,10 @@ The skills in this repo follow the [Agent Skills](https://agentskills.io/) forma
 ### As an Agent Skill
 
 ```bash
-npx skills add box/box-for-ai
+npx skills add box/skills
 ```
 
-Check out the latest and full list of skills [here](https://skills.sh/box/box-for-ai).
+Check out the latest and full list of skills [here](https://skills.sh/box/skills).
 
 ### As a Platform Plugin
 
@@ -29,7 +29,7 @@ The root `plugin.json` and `mcp.json` follow the [Agent Plugins v1.0.0 specifica
 
 ### Kiro Power
 
-In Kiro, open the Powers panel and install the Box Power. If it is not shown in the catalog, select **Add Custom Power** → **Import power from GitHub** and enter `https://github.com/box/box-for-ai`. The bundled skills work in both Kiro IDE and CLI.
+In Kiro, open the Powers panel and install the Box Power. If it is not shown in the catalog, select **Add Custom Power** → **Import power from GitHub** and enter `https://github.com/box/skills`. The bundled skills work in both Kiro IDE and CLI.
 
 Note that the Box MCP Server currently does not support Dynamic Client Registration, so credential-free Power authentication is not yet available in Kiro IDE. Kiro CLI users can configure Box OAuth client credentials in their user MCP settings; future managed OAuth integration or confidential-client OAuth support in the IDE can enable the bundled MCP connection there.
 
