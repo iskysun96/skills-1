@@ -33,6 +33,8 @@ In Kiro, open the Powers panel and install the Box Power. If it is not shown in 
 
 Note that the Box MCP Server currently does not support Dynamic Client Registration, so credential-free Power authentication is not yet available in Kiro IDE. Kiro CLI users can configure Box OAuth client credentials in their user MCP settings; future managed OAuth integration or confidential-client OAuth support in the IDE can enable the bundled MCP connection there.
 
+Try it with: `Use the Box Power to add Box file upload to this app.`
+
 ## Usage
 
 Skills are automatically available once installed. The agent will use them when relevant tasks are detected. Here are some example prompts:
