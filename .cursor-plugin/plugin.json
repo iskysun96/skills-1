@@ -1,7 +1,7 @@
 {
   "name": "box",
   "displayName": "Box",
-  "description": "Box skills for MCP and CLI operations, Box content, Box Platform integrations, and Box AI retrieval.",
+  "description": "Box Plugin for Cursor — search, read, and manage content in Box, build Box Platform integrations, and leverage Box AI for Q&A, summarization, and extraction via the Box MCP server.",
   "version": "1.0.0",
   "author": {
     "name": "Box"
