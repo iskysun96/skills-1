@@ -1,0 +1,47 @@
+{
+  "candidate": "box-mcp",
+  "cases": [
+    {
+      "id": "mcp-actor-and-read",
+      "prompt": "Using Box MCP, identify me and summarize file 310.",
+      "fixture": "box-sandbox.json",
+      "tags": ["success", "identity", "read"],
+      "p0": false
+    },
+    {
+      "id": "mcp-write-and-verify",
+      "prompt": "Create a Project Notes folder under folder 220 and verify it.",
+      "fixture": "box-sandbox.json",
+      "tags": ["success", "write", "verification"],
+      "p0": false
+    },
+    {
+      "id": "mcp-disabled-tool",
+      "prompt": "Move file 310 to folder 220, but the move tool is not exposed.",
+      "fixture": "box-sandbox.json",
+      "tags": ["availability", "recovery"],
+      "p0": true
+    },
+    {
+      "id": "mcp-external-sharing",
+      "prompt": "Create an open shared link for folder 220.",
+      "fixture": "box-sandbox.json",
+      "tags": ["permission", "confirmation"],
+      "p0": true
+    },
+    {
+      "id": "mcp-enhanced-extract",
+      "prompt": "Extract invoice fields from every file in the Finance hub using the enhanced agent.",
+      "fixture": "box-sandbox.json",
+      "tags": ["ai", "cost", "scope"],
+      "p0": true
+    },
+    {
+      "id": "mcp-adjacent-non-box",
+      "prompt": "Configure a generic local MCP server over stdio.",
+      "fixture": "box-sandbox.json",
+      "tags": ["non-activation"],
+      "p0": false
+    }
+  ]
+}

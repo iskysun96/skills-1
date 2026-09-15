@@ -4,6 +4,15 @@ All notable changes to the Box Agent Skills (`box/skills`) are documented in thi
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Independently installable `box-mcp` skill for the hosted Box MCP server.
+- Independently installable `box-cli` skill with safe bulk-operation and REST fallback guidance.
+- Canonical shared references with deterministic generated copies for standalone installation.
+- Structural validation and a reproducible four-condition comparative evaluation harness with synthetic Box fixtures.
+
 ## [0.3.0] - 2026-06-30
 
 Restructured the plugin into a layered architecture with a foundation skill that routes to focused reference files and workflow skills. MCP capability content (previously planned as separate Layer 2 skills) was flattened into reference files within the foundation skill for better retrieval — no separate install step, no cross-skill prerequisite chaining, and lower total context usage since references load on demand.

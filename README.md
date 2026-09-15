@@ -1,6 +1,6 @@
 # Box Agent Skills
 
-Agent Skills to help developers using AI agents work with Box. Whether you're building Box integrations in code, working with Box content via MCP tools, configuring webhooks, or using Box AI retrieval — this plugin gives your assistant the context it needs to do it right.
+Agent Skills that help developers and AI agents work safely and effectively with the Box Developer Platform.
 
 The skills in this repo follow the [Agent Skills](https://agentskills.io/) format and can also be installed as a plugin for platforms like Codex, [Cursor](https://cursor.com), [Claude](https://claude.com), including Claude Code and Cowork, and [Kiro](https://kiro.dev).
 
@@ -9,7 +9,12 @@ The skills in this repo follow the [Agent Skills](https://agentskills.io/) forma
 ### As an Agent Skill
 
 ```bash
+# Choose skills interactively
 npx skills add box/skills
+
+# Or install one independently
+npx skills add box/skills --skill box-mcp
+npx skills add box/skills --skill box-cli
 ```
 
 Check out the latest and full list of skills [here](https://skills.sh/box/skills).
@@ -34,6 +39,20 @@ In Kiro, open the Powers panel and install the Box Power. If it is not shown in 
 Note that the Box MCP Server currently does not support Dynamic Client Registration, so credential-free Power authentication is not yet available in Kiro IDE. Kiro CLI users can configure Box OAuth client credentials in their user MCP settings; future managed OAuth integration or confidential-client OAuth support in the IDE can enable the bundled MCP connection there.
 
 Try it with: `Use the Box Power to add Box file upload to this app.`
+
+## Available Skills
+
+| Skill | Purpose |
+| --- | --- |
+| `box` | Existing general Box foundation and router |
+| `box-mcp` | Connect and operate Box's hosted MCP server |
+| `box-cli` | Reproducible CLI operations with a REST API fallback |
+| `box-legal-workflows` | Shared legal workflow guidance |
+| `box-legal-workflows-intake` | Legal intake and onboarding |
+| `box-legal-workflows-contract` | Contract review and monitoring |
+| `box-legal-workflows-ma` | M&A virtual data rooms |
+
+The `box-mcp` and `box-cli` skills contain every reference they need when installed alone. Maintainers edit canonical shared material under `shared/references/`; the sync script generates marked copies inside each independent skill.
 
 ## Usage
 
@@ -61,12 +80,15 @@ Skills are automatically available once installed. The agent will use them when 
 
 `Fix webhook signature verification`
 
-## Skill Structure
+## Repository Structure
 
-The Box skill follows the [Agent Skills Open Standard](https://agentskills.io/):
+Each skill follows the [Agent Skills Open Standard](https://agentskills.io/):
 
 - `SKILL.md` - Skill manifest with frontmatter, routing table, workflow steps, and guardrails
 - `references/` - Individual reference files (auth, content workflows, MCP tool patterns, AI/retrieval, etc.)
+- `shared/` - Canonical references and the map used to generate portable per-skill copies
+- `scripts/` - Reference sync, validation, and comparative evaluation tools
+- `evals/` - Synthetic cases, fixtures, rubric, and A/B/C/D comparison protocol
 
 ## Prerequisites
 
@@ -89,7 +111,19 @@ curl -sS -H "Authorization: Bearer $BOX_ACCESS_TOKEN" -H "Accept: application/js
 
 ## Contributing
 
-Skills follow the [Agent Skills specification](https://agentskills.io). The Box skill is a directory with a `SKILL.md` file containing YAML frontmatter and markdown instructions, plus a `references/` directory for feature-specific deep dives.
+Skills follow the [Agent Skills specification](https://agentskills.io). Keep each skill independently installable and load detailed references only when needed.
+
+After editing canonical references, regenerate and validate the repository:
+
+```bash
+python3 scripts/sync_shared_references.py
+python3 scripts/sync_shared_references.py --check
+python3 scripts/validate_skills.py
+python3 scripts/run_skill_evals.py --skill box-cli --plan
+python3 scripts/run_skill_evals.py --skill box-mcp --plan
+```
+
+See [`evals/run-comparison.md`](evals/run-comparison.md) for the comparative reduction test and runner-adapter contract.
 
 ## License
 

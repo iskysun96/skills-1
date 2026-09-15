@@ -7,7 +7,7 @@
     {
       "name": "box",
       "source": "./",
-      "description": "Search, read, and manage Box content via the Box MCP server, and build Box Platform integrations. Includes content workflows, shared links, collaborations, webhooks, metadata, Box AI, and MCP tool access."
+      "description": "Use Box through MCP or CLI and build Box Platform integrations. Includes content, collaboration, metadata, Box AI, and legal workflow skills."
     }
   ]
 }

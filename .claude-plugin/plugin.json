@@ -1,6 +1,6 @@
 {
   "name": "box",
-  "description": "Box Plugin for Claude Code to help with Box Platform integrations including content workflows, shared links, webhooks, metadata, and Box AI retrieval.",
+  "description": "Box skills for MCP and CLI operations, Box Platform integrations, content workflows, metadata, and Box AI retrieval.",
   "version": "1.0.0",
   "author": {
     "name": "Box"

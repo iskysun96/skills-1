@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "default_repetitions": 3,
+  "seed": 20260915,
+  "conditions": {
+    "A": {"name": "tools only", "skills": []},
+    "B": {"name": "current experience", "skills": ["skills/box"]},
+    "C": {"name": "candidate only", "skills": ["skills/{candidate}"]},
+    "D": {
+      "name": "coexistence",
+      "skills": [
+        "skills/box",
+        "skills/box-legal-workflows",
+        "skills/box-legal-workflows-contract",
+        "skills/box-legal-workflows-intake",
+        "skills/box-legal-workflows-ma",
+        "skills/{candidate}"
+      ]
+    }
+  },
+  "release_gates": {
+    "p0_failures": 0,
+    "maximum_success_regression_points_vs_b": 5,
+    "minimum_repetitions": 3
+  }
+}

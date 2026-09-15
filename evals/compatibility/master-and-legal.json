@@ -1,0 +1,20 @@
+{
+  "candidate": "compatibility",
+  "applies_to": ["box-cli", "box-mcp"],
+  "cases": [
+    {
+      "id": "compat-master-routing",
+      "prompt": "Use Box to search for the contract and summarize it.",
+      "fixture": "box-sandbox.json",
+      "tags": ["coexistence", "master", "routing"],
+      "p0": true
+    },
+    {
+      "id": "compat-legal-routing",
+      "prompt": "Set up a Box contract-review workflow with attorney approval gates.",
+      "fixture": "box-sandbox.json",
+      "tags": ["coexistence", "legal", "routing"],
+      "p0": true
+    }
+  ]
+}

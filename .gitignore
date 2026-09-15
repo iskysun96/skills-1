@@ -7,3 +7,6 @@
 *.swo
 *~
 .env
+evals/results/*.json
+__pycache__/
+*.pyc

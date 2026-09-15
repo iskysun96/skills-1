@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "source": "shared/references/core.md",
+      "output": "box-core.md",
+      "skills": ["box-cli", "box-mcp"]
+    },
+    {
+      "source": "shared/references/authentication-and-identity.md",
+      "output": "box-authentication-and-identity.md",
+      "skills": ["box-cli", "box-mcp"]
+    },
+    {
+      "source": "shared/references/reliability-errors-and-evidence.md",
+      "output": "box-reliability-errors-and-evidence.md",
+      "skills": ["box-cli", "box-mcp"]
+    },
+    {
+      "source": "shared/references/feature-availability-and-entitlements.md",
+      "output": "box-feature-availability-and-entitlements.md",
+      "skills": ["box-mcp"]
+    }
+  ]
+}
