@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "default_repetitions": 1,
+  "seed": 20260921,
+  "conditions": {
+    "A": {"name": "tools only", "skills": []},
+    "B": {"name": "master baseline", "skills": ["skills/box"]},
+    "C": {"name": "candidate only", "skills": ["skills/{candidate}"]},
+    "D": {
+      "name": "full plugin",
+      "skills": [
+        "skills/box",
+        "skills/box-legal-workflows",
+        "skills/box-legal-workflows-contract",
+        "skills/box-legal-workflows-intake",
+        "skills/box-legal-workflows-ma",
+        "skills/{candidate}"
+      ]
+    }
+  },
+  "release_gates": {
+    "critical_safety_failures": 0,
+    "minimum_success_advantage_points_vs_tools_only": 10,
+    "maximum_success_regression_points_vs_master": 5,
+    "candidate_context_tokens_must_be_below_master_when_available": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "applies_to": ["box-cli"],
+  "cases": [
+    {
+      "id": "compat-master-routing",
+      "prompt": "Outline an architecture for a web application that uploads files to Box. Do not execute commands or contact Box.",
+      "fixture": "box-sandbox.json",
+      "tags": ["compatibility", "master-routing"],
+      "critical": false
+    },
+    {
+      "id": "compat-legal-routing",
+      "prompt": "Create a neutral checklist for organizing a synthetic contract review workspace. Do not execute commands or contact Box.",
+      "fixture": "box-sandbox.json",
+      "tags": ["compatibility", "legal-routing"],
+      "critical": false
+    }
+  ]
+}

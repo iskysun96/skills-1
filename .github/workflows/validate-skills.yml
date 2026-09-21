@@ -1,0 +1,29 @@
+name: Validate skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate skills and public fixtures
+        run: python3 scripts/validate_skills.py
+      - name: Verify standalone Box CLI package
+        run: python3 scripts/package_skill.py --skill box-cli --check
+      - name: Verify evaluation plan
+        run: python3 scripts/run_skill_evals.py --skill box-cli --plan > /tmp/box-cli-eval-plan.json
+      - name: Smoke-test evaluation protocol
+        run: >-
+          python3 scripts/run_skill_evals.py --skill box-cli
+          --runner "python3 evals/fixtures/mock_runner.py"
+          --output /tmp/box-cli-eval-smoke.json
