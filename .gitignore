@@ -7,8 +7,3 @@
 *.swo
 *~
 .env
-dist/
-evals/results/*
-!evals/results/.gitkeep
-__pycache__/
-*.pyc

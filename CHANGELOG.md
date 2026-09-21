@@ -9,8 +9,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - `box-cli` as an independently installable, single-file skill for verified Box CLI operations, automation, bulk recovery, and narrow REST fallback.
-- A standard-library packaging check that builds a deterministic standalone skill archive.
-- A public-safe A/B/C/D evaluation baseline with synthetic fixtures, a mock runner, ignored local results, and CI validation.
 
 ## [0.3.0] - 2026-06-30
 

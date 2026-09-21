@@ -78,7 +78,7 @@ Skills are automatically available once installed. The agent will use them when 
 
 ## Skill Structure
 
-The skills follow the [Agent Skills Open Standard](https://agentskills.io/). Each skill owns its instructions and can be packaged independently.
+The skills follow the [Agent Skills Open Standard](https://agentskills.io/). Each skill owns its instructions and can be installed independently.
 
 - `SKILL.md` - Required manifest and task guidance
 - `references/` - Optional skill-local detail for substantial conditional workflows
@@ -107,18 +107,7 @@ curl -sS -H "Authorization: Bearer $BOX_ACCESS_TOKEN" -H "Accept: application/js
 
 ## Contributing
 
-Validate skill structure, public fixtures, standalone packaging, and the evaluation protocol before opening a pull request:
-
-```bash
-python3 scripts/validate_skills.py
-python3 scripts/package_skill.py --skill box-cli --check
-python3 scripts/run_skill_evals.py --skill box-cli --plan
-python3 scripts/run_skill_evals.py --skill box-cli \
-  --runner "python3 evals/fixtures/mock_runner.py" \
-  --output evals/results/box-cli-smoke.json
-```
-
-Evaluation fixtures and prompts committed to this repository must be entirely synthetic. Real evaluation output, credentials, customer or employee data, internal paths, private endpoints, and raw provider traces must remain outside Git. See [`evals/run-comparison.md`](evals/run-comparison.md).
+Skills follow the [Agent Skills specification](https://agentskills.io). Each skill is a directory with a `SKILL.md` file containing YAML frontmatter and markdown instructions, plus only the supporting resources its workflow requires.
 
 ## License
 
